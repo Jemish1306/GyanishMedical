@@ -1,0 +1,92 @@
+/* Tailwind base imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 👇 Your Custom Styles */
+@layer components {
+  .container-3x {
+    @apply max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply bg-black text-white px-6 py-2 rounded hover:scale-105 transition font-medium;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border border-white text-white px-6 py-2 rounded hover:bg-white hover:text-black transition font-medium;
+  }
+
+  .card-shadow {
+    @apply rounded-lg shadow-md hover:shadow-lg transition;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-gray-800 mb-8 text-center;
+
+  }
+
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6;
+  }
+}
+
+/* ✅ Custom animations (outside @layer) */
+@keyframes dropIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  font-weight: bold;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.drop-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: dropIn 0.5s ease forwards;
+}
+
+
+
+@layer base {
+  html {
+    /* snap the viewport vertically, mandatory alignment, and smooth scroll */
+    @apply snap-y snap-mandatory scroll-smooth;
+  }
+  body {
+    @apply overflow-y-auto;
+  }
+  /* every slide should occupy the full viewport */
+  .snap-slide {
+    @apply snap-start min-h-screen;
+  }
+
+
+
+  @media (max-width: 767px) {
+  .bg-contact-mobile {
+    background-image: url('../assets/vectors/contact-us.svg');
+    background-size: cover;
+    background-position: center;
+  }
+}
+@media (min-width: 768px) {
+  .bg-contact-mobile {
+    background-image: none;
+  }
+}
+}
